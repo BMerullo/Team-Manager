@@ -13,7 +13,7 @@ app.use(
 );
 
 require("./config/mongoose.config.js");
-// require("./routes/player.routes")(app);
+require("./routes/players.routes")(app);
 
 
 app.listen (8000, ()=> console.log("you are conntected at port 8000"));
