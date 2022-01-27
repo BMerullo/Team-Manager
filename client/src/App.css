@@ -1,9 +1,49 @@
 .App {
   text-align: center;
-  background-color: aqua;
+  padding: 50px;  
 }
 
 
-.btn-dark {
-  margin: 30px;
+.header {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 40px;
+  margin-left: 155px;
+}
+
+.headerLink {
+  margin-right: 20px;
+  padding-right: 20px;  
+  border-right:solid black 3px ;
+}
+
+.containerLink {
+  margin-right: 20px;
+  padding-right: 20px;
+  margin-left: 40px;
+  border-right:solid black 3px ;
+}
+
+.container {
+  margin-top: 15px;
+  padding: 50px;
+  border: solid black 5px;
+}
+
+.subHeader {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 40px;
+}
+
+.contentBox {
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  /* border: solid black 4px; */
+}
+
+.formDiv {
+  width: 600px;
+  margin: auto;
 }
