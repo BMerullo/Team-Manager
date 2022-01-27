@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Header from './Header';
 import axios from 'axios';
@@ -18,13 +18,24 @@ const PlayerList = props => {
             .catch((err) => console.log(err));
     }, [])
 
+    const handleDelete = (playerId) => {
+        axios.delete(`http://localhost:8000/api/players/${playerId}`)
+        .then((res)=> {
+            console.log(res.data);
+            setPlayerList(playerList.filter((list)=>list._id !== playerId))
+        })
+        .catch((err)=> (
+            console.log(err)
+        ))
+    }
+
     return (
         <div>
             <Header />
             <div className="container">
                 <div className="subHeader">
                     <h3 className="containerLink"><Link to="/players/list">List</Link></h3>
-                    <h3><Link to="/players/addplayer">Add a Player</Link></h3>
+                    <h3><Link to="/players/addplayer">Add Player</Link></h3>
                 </div>
                 <div className="contentBox">
                 <table class="table table-bordered border-primary">
@@ -41,7 +52,7 @@ const PlayerList = props => {
                                     <tr>
                                         <th>{list.name}</th>
                                         <th>{list.position}</th>
-                                        <th><button type="button" class="btn btn-danger">DELETE</button></th>
+                                        <th><button onClick={()=>handleDelete(list._id)} type="button" class="btn btn-danger">DELETE</button></th>
                                     </tr>
                                 ))
                             }

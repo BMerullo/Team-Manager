@@ -24,6 +24,21 @@
   border-right:solid black 3px ;
 }
 
+.setupLink {
+  border-right:solid black 3px; 
+  margin-right: 20px;
+  padding-right: 20px;
+}
+
+
+.statusContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  padding: 20px;
+  border: solid black 5px;
+}
+
 .container {
   margin-top: 15px;
   padding: 50px;

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import Header from './Header';
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import axios from 'axios';
 
 const AddPlayer = props => {
@@ -12,7 +12,8 @@ const AddPlayer = props => {
     // const [errors, setErrors] = useState({
 
     // });
-
+    const navigate = useNavigate()
+    
     const handleChange = (e) => {
         setPlayer({
             ...player,
@@ -21,6 +22,7 @@ const AddPlayer = props => {
     };
 
     const submitHandler = (e) => {
+        e.preventDefault()
         axios
             .post("http://localhost:8000/api/players",
                 player,
@@ -32,7 +34,9 @@ const AddPlayer = props => {
                 setPlayer({
                     name: "",
                     position: ""
-                },)
+                },
+                navigate("/players/list")
+                )
             })
             .catch((err)=>{
                 console.log(err);
@@ -46,7 +50,7 @@ const AddPlayer = props => {
             <div className="container">
                 <div className="subHeader">
                     <h3 className="containerLink"><Link to="/players/list">List</Link></h3>
-                    <h3><Link to="/players/addplayer">Add a Player</Link></h3>
+                    <h3><Link to="/players/addplayer">Add Player</Link></h3>
                 </div>
                 <div className="formDiv">
                     <form onSubmit={submitHandler}>
@@ -74,7 +78,7 @@ const AddPlayer = props => {
                             />
                             <label htmlFor="floatingInput">Preferred Position</label>
                         </div>
-                        <button type="submit" className="btn btn-outline-primary">Primary</button>
+                        <button type="submit" className="btn btn-outline-primary">Submit</button>
                     </form>
                 </div>
             </div>
